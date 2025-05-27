@@ -36,24 +36,23 @@ const stars = document.querySelectorAll('.stars i');
 let currentRating = 0;
 
 stars.forEach(star => {
-    star.addEventListener('mouseover', function() {
-        const rating = this.dataset.rating;
-        highlightStars(rating);
+    star.addEventListener('click', () => {
+        currentRating = parseInt(star.dataset.rating);
+        updateStars(currentRating);
     });
 
-    star.addEventListener('mouseout', function() {
-        highlightStars(currentRating);
+    star.addEventListener('mouseover', () => {
+        updateStars(parseInt(star.dataset.rating));
     });
 
-    star.addEventListener('click', function() {
-        currentRating = this.dataset.rating;
-        highlightStars(currentRating);
+    star.addEventListener('mouseout', () => {
+        updateStars(currentRating);
     });
 });
 
-function highlightStars(rating) {
+function updateStars(rating) {
     stars.forEach(star => {
-        const starRating = star.dataset.rating;
+        const starRating = parseInt(star.dataset.rating);
         if (starRating <= rating) {
             star.classList.remove('far');
             star.classList.add('fas');
@@ -66,24 +65,73 @@ function highlightStars(rating) {
 
 // Feedback form submission
 const feedbackForm = document.getElementById('feedback-form');
+const feedbackList = document.createElement('div');
+feedbackList.className = 'feedback-list';
+document.querySelector('.feedback .rating-container').appendChild(feedbackList);
 
 feedbackForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const feedback = feedbackForm.querySelector('textarea').value;
-    
-    if (!feedback.trim()) {
-        alert('Please enter your feedback before submitting.');
+    if (currentRating === 0) {
+        alert('Please select a rating');
         return;
     }
 
-    // Here you would typically send the feedback to your backend
-    // For now, we'll just show a success message
-    alert('Thank you for your feedback!');
-    feedbackForm.reset();
-    currentRating = 0;
-    highlightStars(0);
+    const message = feedbackForm.querySelector('textarea').value;
+    
+    try {
+        const response = await fetch('http://localhost:3000/api/feedback', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                rating: currentRating,
+                message: message
+            })
+        });
+
+        if (response.ok) {
+            feedbackForm.reset();
+            currentRating = 0;
+            updateStars(0);
+            loadFeedback();
+            alert('Thank you for your feedback!');
+        }
+    } catch (error) {
+        console.error('Error submitting feedback:', error);
+        alert('Error submitting feedback. Please try again.');
+    }
 });
+
+// Load and display feedback
+async function loadFeedback() {
+    try {
+        const response = await fetch('http://localhost:3000/api/feedback');
+        const feedback = await response.json();
+        
+        feedbackList.innerHTML = '<h3>Recent Feedback</h3>';
+        
+        feedback.reverse().slice(0, 5).forEach(item => {
+            const date = new Date(item.date).toLocaleDateString();
+            const stars = '⭐'.repeat(item.rating);
+            
+            const feedbackItem = document.createElement('div');
+            feedbackItem.className = 'feedback-item';
+            feedbackItem.innerHTML = `
+                <div class="feedback-rating">${stars}</div>
+                <div class="feedback-message">${item.message}</div>
+                <div class="feedback-date">${date}</div>
+            `;
+            feedbackList.appendChild(feedbackItem);
+        });
+    } catch (error) {
+        console.error('Error loading feedback:', error);
+    }
+}
+
+// Load initial feedback
+loadFeedback();
 
 // Add smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
