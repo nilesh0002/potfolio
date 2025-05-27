@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilesh's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Nilesh's Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#featured">Featured</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Full Stack Web Developer</p>
+            <div class="social-links">
+                <a href="https://github.com/nilesh0002" target="_blank" class="github-btn">
+                    <i class="fab fa-github"></i> View My GitHub
+                </a>
+                <a href="https://wa.me/YOUR_PHONE_NUMBER" target="_blank" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p class="about-text">I am a passionate Full Stack Web Developer with expertise in modern web technologies. I love creating interactive and user-friendly web applications that solve real-world problems.</p>
+        </div>
+        <div class="skills-container">
+            <div class="skill">
+                <i class="fab fa-html5"></i>
+                <h3>HTML</h3>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 90%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS</h3>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 85%"></div>
+                </div>
+            </div>
+            <div class="skill">
+                <i class="fab fa-js"></i>
+                <h3>JavaScript</h3>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 80%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured" class="featured">
+        <h2>Featured Project</h2>
+        <div class="featured-project">
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>Movie Website</h3>
+                <p>A dynamic movie website showcasing the latest films, ratings, and reviews. Built with modern web technologies for an optimal user experience.</p>
+                <div class="project-tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+                <a href="#" class="project-link">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div id="github-repos" class="repo-container">
+            <!-- GitHub repositories will be loaded here -->
+        </div>
+    </section>
+
+    <section id="feedback" class="feedback">
+        <h2>Rate & Feedback</h2>
+        <div class="rating-container">
+            <div class="stars">
+                <i class="far fa-star" data-rating="1"></i>
+                <i class="far fa-star" data-rating="2"></i>
+                <i class="far fa-star" data-rating="3"></i>
+                <i class="far fa-star" data-rating="4"></i>
+                <i class="far fa-star" data-rating="5"></i>
+            </div>
+            <form id="feedback-form">
+                <textarea placeholder="Your suggestions and feedback..." required></textarea>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Nilesh's Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
