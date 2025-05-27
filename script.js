@@ -105,14 +105,32 @@ feedbackForm.addEventListener('submit', async (e) => {
 });
 
 // Load and display feedback
-async function loadFeedback() {
+let currentPage = 1;
+const feedbacksPerPage = 5;
+
+async function loadFeedback(page = 1) {
     try {
         const response = await fetch('http://localhost:3000/api/feedback');
-        const feedback = await response.json();
+        const allFeedback = await response.json();
         
-        feedbackList.innerHTML = '<h3>Recent Feedback</h3>';
+        // Calculate pagination
+        const totalPages = Math.ceil(allFeedback.length / feedbacksPerPage);
+        const startIndex = (page - 1) * feedbacksPerPage;
+        const feedbackToShow = allFeedback.reverse();
         
-        feedback.reverse().slice(0, 5).forEach(item => {
+        feedbackList.innerHTML = `
+            <h3>All Feedback (${allFeedback.length} total)</h3>
+            <div class="feedback-items"></div>
+            <div class="pagination">
+                ${page > 1 ? `<button onclick="loadFeedback(${page - 1})" class="page-btn">Previous</button>` : ''}
+                <span class="page-info">Page ${page} of ${totalPages}</span>
+                ${page < totalPages ? `<button onclick="loadFeedback(${page + 1})" class="page-btn">Next</button>` : ''}
+            </div>
+        `;
+
+        const feedbackItems = feedbackList.querySelector('.feedback-items');
+        
+        feedbackToShow.slice(startIndex, startIndex + feedbacksPerPage).forEach(item => {
             const date = new Date(item.date).toLocaleDateString();
             const stars = '⭐'.repeat(item.rating);
             
@@ -123,10 +141,28 @@ async function loadFeedback() {
                 <div class="feedback-message">${item.message}</div>
                 <div class="feedback-date">${date}</div>
             `;
-            feedbackList.appendChild(feedbackItem);
+            feedbackItems.appendChild(feedbackItem);
         });
+
+        // Add feedback statistics
+        const avgRating = (allFeedback.reduce((sum, item) => sum + item.rating, 0) / allFeedback.length).toFixed(1);
+        const statsDiv = document.createElement('div');
+        statsDiv.className = 'feedback-stats';
+        statsDiv.innerHTML = `
+            <div class="stat-item">
+                <span class="stat-label">Average Rating:</span>
+                <span class="stat-value">${avgRating} ⭐</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Total Feedback:</span>
+                <span class="stat-value">${allFeedback.length}</span>
+            </div>
+        `;
+        feedbackList.insertBefore(statsDiv, feedbackList.firstChild);
+
     } catch (error) {
         console.error('Error loading feedback:', error);
+        feedbackList.innerHTML = '<p class="error-message">Error loading feedback. Please try again later.</p>';
     }
 }
 
