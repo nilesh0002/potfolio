@@ -10,100 +10,128 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-brand">Nilesh's Portfolio</div>
+        <div class="nav-brand">Portfolio.</div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
+            <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#featured">Featured</a></li>
+            <li><a href="#services">Services</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#feedback">Feedback</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Full Stack Web Developer</p>
-            <div class="social-links">
-                <a href="https://github.com/nilesh0002" target="_blank" class="github-btn">
-                    <i class="fab fa-github"></i> View My GitHub
-                </a>
-                <a href="https://api.whatsapp.com/send?phone=919801960622" target="_blank" class="whatsapp-btn">
-                    <i class="fab fa-whatsapp"></i> Contact on WhatsApp
-                </a>
+            <div class="hero-text">
+                <p class="greeting">Hello, It's Me</p>
+                <h1>Nilesh Singh</h1>
+                <p class="role">And I'm a <span class="highlight">Full Stack Developer</span></p>
+                <p class="description">Passionate about creating innovative web solutions and turning ideas into reality through clean, efficient code.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/nilesh0002" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/nileshsingh98" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=919801960622" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <a href="#contact" class="cta-button">Download CV</a>
+            </div>
+            <div class="hero-image">
+                <div class="hexagon-border">
+                    <img src="profile.jpg" alt="Nilesh Singh">
+                </div>
             </div>
         </div>
     </section>
 
     <section id="about" class="about">
-        <h2>About Me</h2>
         <div class="about-content">
-            <p class="about-text">I am a passionate Full Stack Web Developer with expertise in modern web technologies. I love creating interactive and user-friendly web applications that solve real-world problems.</p>
-        </div>
-        <div class="skills-container">
-            <div class="skill">
-                <i class="fab fa-html5"></i>
-                <h3>HTML</h3>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 90%"></div>
+            <div class="about-image">
+                <div class="hexagon-border">
+                    <img src="profile.jpg" alt="Nilesh Singh">
                 </div>
             </div>
-            <div class="skill">
-                <i class="fab fa-css3-alt"></i>
-                <h3>CSS</h3>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 85%"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <i class="fab fa-js"></i>
-                <h3>JavaScript</h3>
-                <div class="skill-bar">
-                    <div class="skill-level" style="width: 80%"></div>
-                </div>
+            <div class="about-text">
+                <h2>About <span class="highlight">Me</span></h2>
+                <h3>Full Stack Developer!</h3>
+                <p>I am a passionate Full Stack Developer with expertise in modern web technologies. I specialize in creating responsive, user-friendly web applications that deliver exceptional user experiences. With a strong foundation in both frontend and backend development, I bring ideas to life through clean, efficient, and maintainable code.</p>
+                <a href="#contact" class="cta-button">Read More</a>
             </div>
         </div>
     </section>
 
-    <section id="featured" class="featured">
-        <h2>Featured Project</h2>
-        <div class="featured-project">
-            <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-film"></i>
-                </div>
-                <h3>Movie Website</h3>
-                <p>A dynamic movie website showcasing the latest films, ratings, and reviews. Built with modern web technologies for an optimal user experience.</p>
-                <div class="project-tech">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                </div>
-                <a href="#" class="project-link">View Project</a>
+    <section id="services" class="services">
+        <h2>Our <span class="highlight">Services</span></h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-code"></i>
+                <h3>Web Development</h3>
+                <p>Creating responsive and dynamic websites using modern technologies and best practices.</p>
+                <a href="#" class="learn-more">Learn more</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Website Design</h3>
+                <p>Designing beautiful and intuitive user interfaces that enhance user experience.</p>
+                <a href="#" class="learn-more">Learn more</a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Digital Marketing</h3>
+                <p>Implementing effective digital marketing strategies to grow your online presence.</p>
+                <a href="#" class="learn-more">Learn more</a>
             </div>
         </div>
     </section>
 
     <section id="projects" class="projects">
-        <h2>My Projects</h2>
-        <div id="github-repos" class="repo-container">
-            <!-- GitHub repositories will be loaded here -->
+        <h2>Latest <span class="highlight">Projects</span></h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="project1.jpg" alt="Project 1">
+                <div class="project-info">
+                    <h3>Web Development</h3>
+                    <p>Project description goes here</p>
+                    <a href="#" class="learn-more">Learn more</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="project2.jpg" alt="Project 2">
+                <div class="project-info">
+                    <h3>App Design</h3>
+                    <p>Project description goes here</p>
+                    <a href="#" class="learn-more">Learn more</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="project3.jpg" alt="Project 3">
+                <div class="project-info">
+                    <h3>Digital Marketing</h3>
+                    <p>Project description goes here</p>
+                    <a href="#" class="learn-more">Learn more</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="feedback" class="feedback">
-        <h2>Rate & Feedback</h2>
-        <div class="rating-container">
-            <div class="stars">
-                <i class="far fa-star" data-rating="1"></i>
-                <i class="far fa-star" data-rating="2"></i>
-                <i class="far fa-star" data-rating="3"></i>
-                <i class="far fa-star" data-rating="4"></i>
-                <i class="far fa-star" data-rating="5"></i>
-            </div>
-            <form id="feedback-form">
-                <textarea placeholder="Your suggestions and feedback..." required></textarea>
-                <button type="submit">Submit Feedback</button>
+    <section id="contact" class="contact">
+        <h2>Contact <span class="highlight">Me!</span></h2>
+        <div class="contact-form">
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </div>
     </section>
