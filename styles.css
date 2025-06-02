@@ -426,12 +426,40 @@ footer {
     font-family: 'Share Tech Mono', monospace;
 }
 
+/* Mobile Menu Toggle Button */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 1024px) {
+    .navbar {
+        padding: 1rem 5%;
+    }
+
     .hero-content,
     .about-content {
         flex-direction: column;
         text-align: center;
+        gap: 3rem;
+    }
+
+    .hero {
+        padding-top: 6rem;
     }
 
     .hero h1 {
@@ -449,12 +477,17 @@ footer {
     .services-grid,
     .project-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .about, .services, .projects, .contact {
+        padding: 4rem 5%;
     }
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        padding: 1rem 5%;
+    .menu-toggle {
+        display: flex;
     }
 
     .nav-links {
@@ -468,11 +501,26 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 2rem;
         transition: right 0.3s ease;
+        z-index: 1000;
     }
 
     .nav-links.active {
         right: 0;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
     }
 
     .services-grid,
@@ -489,15 +537,31 @@ footer {
         width: 280px;
         height: 280px;
     }
+
+    .contact-form {
+        padding: 0 1rem;
+    }
 }
 
 @media (max-width: 480px) {
+    .navbar {
+        padding: 1rem 1rem;
+    }
+
+    .hero {
+        padding: 6rem 1rem 2rem 1rem;
+    }
+
     .hero h1 {
         font-size: 2.5rem;
     }
 
     .role {
         font-size: 1.2rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
     }
 
     .hexagon-border {
@@ -508,5 +572,38 @@ footer {
     .hexagon-border img {
         width: 230px;
         height: 230px;
+    }
+
+    .about, .services, .projects, .contact {
+        padding: 3rem 1rem;
+    }
+
+    .about h2, .services h2, .projects h2, .contact h2 {
+        font-size: 2rem;
+    }
+
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.8rem;
+        font-size: 0.9rem;
     }
 } 
