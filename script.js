@@ -479,4 +479,48 @@ style.textContent = `
         padding: 2rem;
     }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+
+// Handle project image loading
+document.addEventListener('DOMContentLoaded', () => {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        const img = card.querySelector('img');
+        if (img) {
+            if (img.complete) {
+                card.classList.add('loaded');
+            } else {
+                img.addEventListener('load', () => {
+                    card.classList.add('loaded');
+                });
+            }
+        }
+    });
+});
+
+// Add touch ripple effect for project cards
+const addTouchRipple = () => {
+    const cards = document.querySelectorAll('.project-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('touchstart', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.touches[0].clientX - rect.left;
+            const y = e.touches[0].clientY - rect.top;
+            
+            const ripple = document.createElement('div');
+            ripple.className = 'ripple';
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            card.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 1000);
+        });
+    });
+};
+
+addTouchRipple(); 
