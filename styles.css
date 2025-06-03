@@ -944,13 +944,19 @@ footer {
     }
 
     .hexagon-border {
-        width: 320px;
-        height: 320px;
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
+        clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        background: linear-gradient(45deg, var(--primary-color), transparent);
     }
 
     .hexagon-border img {
-        width: 300px;
-        height: 300px;
+        width: 260px;
+        height: 260px;
+        clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        object-fit: cover;
+        filter: grayscale(100%);
     }
 
     .contact-form {
@@ -1092,8 +1098,19 @@ footer {
     }
 
     .hexagon-border {
+        width: 220px;
+        height: 220px;
+        clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        background: linear-gradient(45deg, var(--primary-color), transparent);
+        animation: borderGlow 4s ease-in-out infinite;
+    }
+
+    .hexagon-border img {
         width: 200px;
         height: 200px;
+        clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        object-fit: cover;
+        filter: grayscale(100%);
     }
 
     .about, .skills, .projects, .contact {
