@@ -6,7 +6,7 @@ const navLinksItems = document.querySelectorAll('.nav-links a');
 menuToggle.addEventListener('click', () => {
     menuToggle.classList.toggle('active');
     navLinks.classList.toggle('active');
-    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    document.body.classList.toggle('menu-open');
 });
 
 // Close menu when clicking a link
@@ -14,16 +14,16 @@ navLinksItems.forEach(link => {
     link.addEventListener('click', () => {
         menuToggle.classList.remove('active');
         navLinks.classList.remove('active');
-        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
     });
 });
 
 // Close menu when clicking outside
 document.addEventListener('click', (e) => {
-    if (!menuToggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+    if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
         menuToggle.classList.remove('active');
         navLinks.classList.remove('active');
-        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
     }
 });
 
@@ -373,6 +373,23 @@ function loadFeedback(page = 1) {
 document.addEventListener('DOMContentLoaded', () => {
     fetchGitHubRepos();
     loadFeedback();
+
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = 'auto';
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.target.classList.contains('menu-open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+
+    observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class'],
+    });
 });
 
 // Add styles for repository cards and notifications
