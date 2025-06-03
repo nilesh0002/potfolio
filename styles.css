@@ -10,6 +10,8 @@
     --primary-color: #00E2FF;
     --secondary-color: #845EF7;
     --accent-color: #FF3366;
+    --logo-primary: #FF3366;
+    --logo-secondary: #FF6B6B;
     --dark-bg: #0A0A0A;
     --darker-bg: #050505;
     --card-bg: #111111;
@@ -17,6 +19,7 @@
     --text-secondary: #CCCCCC;
     --transition-speed: 0.3s;
     --gradient-primary: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    --gradient-logo: linear-gradient(45deg, var(--logo-primary), var(--logo-secondary));
 }
 
 body {
@@ -41,14 +44,61 @@ body {
 }
 
 .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+}
+
+.logo-initials {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--text-primary);
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: var(--gradient-logo);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
     position: relative;
+    transition: all var(--transition-speed);
+}
+
+.logo-initials::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-logo);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.5;
+    transition: all var(--transition-speed);
+}
+
+.logo-initials:hover {
+    transform: scale(1.05);
+}
+
+.logo-initials:hover::before {
+    opacity: 0.8;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+}
+
+.logo-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 1px;
 }
 
 .nav-links {
