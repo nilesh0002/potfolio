@@ -158,7 +158,12 @@
     <section id="contact" class="contact">
         <h2>Contact <span class="highlight">Me!</span></h2>
         <div class="contact-form">
-            <form id="contact-form">
+            <!-- To make this form work:
+                1. Go to formspree.io
+                2. Sign up for a free account
+                3. Create a new form
+                4. Replace YOUR_FORM_ID below with the form ID Formspree gives you -->
+            <form id="contact-form" action="https://formspree.io/f/mgvyepko" method="POST">
                 <div class="form-group">
                     <input type="text" id="name" name="name" placeholder="Your Name" required>
                 </div>
@@ -168,6 +173,8 @@
                 <div class="form-group">
                     <textarea id="message" name="message" placeholder="Your Message" required></textarea>
                 </div>
+                <!-- Honeypot field to prevent spam -->
+                <input type="text" name="_gotcha" style="display: none;">
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </div>

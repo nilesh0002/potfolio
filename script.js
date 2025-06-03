@@ -102,23 +102,36 @@ const contactForm = document.getElementById('contact-form');
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const formData = {
-        name: contactForm.querySelector('#name').value,
-        email: contactForm.querySelector('#email').value,
-        message: contactForm.querySelector('#message').value
-    };
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
 
-    // Store in localStorage (for demo purposes)
-    const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
-    messages.push({
-        ...formData,
-        date: new Date().toISOString()
-    });
-    localStorage.setItem('contactMessages', JSON.stringify(messages));
+    try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
 
-    // Show success message
-    showNotification('Message sent successfully!', 'success');
-    contactForm.reset();
+        const responseData = await response.json();
+        
+        if (response.ok) {
+            showNotification('Message sent successfully! I will get back to you soon.', 'success');
+            contactForm.reset();
+        } else {
+            throw new Error(responseData.error || 'Failed to send message');
+        }
+    } catch (error) {
+        console.error('Form submission error:', error);
+        showNotification('Failed to send message. Please try again later.', 'error');
+    } finally {
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
+    }
 });
 
 // Notification system
