@@ -899,9 +899,8 @@ footer {
     .nav-links a:nth-child(5) { transition-delay: 0.5s; }
 
     .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 1.5rem;
-        padding: 0;
     }
 
     .skill-card {
@@ -910,32 +909,36 @@ footer {
 
     .project-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .project-card {
-        height: 300px;
+        height: auto;
+        min-height: 250px;
+        aspect-ratio: 16/12;
+    }
+
+    .project-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
     }
 
     .project-info {
         padding: 1.5rem;
         opacity: 1;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.8) 50%,
+            rgba(0, 0, 0, 0.4) 100%
+        );
     }
 
-    .project-info h3 {
-        font-size: 1.3rem;
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    .project-info p {
-        transform: translateY(0);
-        opacity: 1;
-        margin: 0.5rem 0 1rem;
-    }
-
-    .project-card .learn-more {
+    .project-info h3,
+    .project-info p,
+    .project-info .learn-more {
         opacity: 1;
         transform: translateY(0);
     }
@@ -1114,109 +1117,50 @@ footer {
     }
 
     .project-card {
-        aspect-ratio: 16/18;
-    }
-
-    .project-info {
-        padding: 1.2rem;
-        opacity: 0;  /* Hidden by default on mobile */
-        background: transparent;
-    }
-
-    .project-card:hover .project-info,
-    .project-card:active .project-info,
-    .project-card:focus .project-info {
-        opacity: 1;
-        background: linear-gradient(
-            rgba(0, 0, 0, 0.7) 0%,
-            rgba(0, 0, 0, 0.8) 50%,
-            rgba(0, 0, 0, 0.9) 100%
-        );
-    }
-
-    .project-card:hover img,
-    .project-card:active img,
-    .project-card:focus img {
-        filter: brightness(0.3);
-        transform: scale(1.02);
-    }
-
-    .project-info h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.8rem;
-    }
-
-    .project-info p {
-        font-size: 0.82rem;
-        line-height: 1.5;
-        margin-bottom: 1rem;
-    }
-
-    .project-tech {
-        gap: 0.3rem;
-        margin-bottom: 0.8rem;
-        flex-wrap: wrap;
-    }
-
-    .project-tech span {
-        font-size: 0.7rem;
-        padding: 0.3rem 0.6rem;
-        margin-bottom: 0.3rem;
-    }
-
-    .project-info .learn-more {
-        font-size: 0.8rem;
-        padding: 0.4rem 0;
-    }
-
-    .project-links {
-        flex-direction: column;
-        gap: 0.8rem;
-    }
-
-    .project-links .learn-more {
-        font-size: 0.8rem;
-        justify-content: center;
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .skill-card {
-        padding: 1.5rem;
-    }
-
-    .skill-card h3 {
-        font-size: 1.2rem;
-    }
-
-    .skill-card p {
-        font-size: 0.9rem;
-    }
-
-    .project-card {
-        height: 250px;
+        min-height: 200px;
+        aspect-ratio: 16/14;
     }
 
     .project-info {
         padding: 1rem;
+        opacity: 1;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.8) 50%,
+            rgba(0, 0, 0, 0.4) 100%
+        );
+    }
+
+    .project-card img {
+        filter: brightness(0.7);
     }
 
     .project-info h3 {
         font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: #fff;
     }
 
     .project-info p {
         font-size: 0.9rem;
-        margin: 0.5rem 0 1rem;
-        -webkit-line-clamp: 2;
+        margin: 0.5rem 0;
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: rgba(255, 255, 255, 0.9);
     }
 
     .project-info .learn-more {
-        padding: 0.6rem 1.2rem;
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
         font-size: 0.9rem;
+        background: rgba(0, 226, 255, 0.1);
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     .project-links {
